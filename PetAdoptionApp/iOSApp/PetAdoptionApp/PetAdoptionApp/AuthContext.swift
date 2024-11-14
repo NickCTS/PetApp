@@ -1,8 +1,20 @@
-//
-//  AuthContext.swift
-//  PetAdoptionApp
-//
-//  Created by Ray Luscious on 11/13/24.
-//
+import SwiftUI
+import Combine
 
-import Foundation
+class AuthContext: ObservableObject {
+    @Published var isAuthenticated: Bool = false
+    @Published var showLogin: Bool = true
+    @Published var token: String?
+    
+    func login(token: String) {
+        self.token = token
+        self.isAuthenticated = true
+        self.showLogin = false
+    }
+    
+    func logout() {
+        self.token = nil
+        self.isAuthenticated = false
+        self.showLogin = true
+    }
+}

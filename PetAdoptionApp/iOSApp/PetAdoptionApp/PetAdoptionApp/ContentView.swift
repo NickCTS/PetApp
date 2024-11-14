@@ -1,24 +1,34 @@
-//
-//  ContentView.swift
-//  PetAdoptionApp
-//
-//  Created by Ray Luscious on 11/12/24.
-//
-
 import SwiftUI
 
 struct ContentView: View {
     var body: some View {
-        VStack {
-            Image(systemName: "globe")
-                .imageScale(.large)
-                .foregroundStyle(.tint)
-            Text("Hello, world!")
+        TabView {
+            HomeView()
+                .tabItem {
+                    Label("Home", systemImage: "house.fill")
+                }
+            
+            PetListView()
+                .tabItem {
+                    Label("Pets", systemImage: "pawprint.fill")
+                }
+            
+            MyApplicationsView()
+                .tabItem {
+                    Label("Applications", systemImage: "doc.text.fill")
+                }
+            
+            AuthView()
+                .tabItem {
+                    Label("Account", systemImage: "person.crop.circle")
+                }
+
         }
-        .padding()
     }
 }
 
-#Preview {
-    ContentView()
+struct ContentView_Previews: PreviewProvider {
+    static var previews: some View {
+        ContentView()
+    }
 }

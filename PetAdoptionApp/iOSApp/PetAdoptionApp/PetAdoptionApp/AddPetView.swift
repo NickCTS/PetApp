@@ -1,18 +1,30 @@
-//
-//  AddPetView.swift
-//  PetAdoptionApp
-//
-//  Created by Ray Luscious on 11/12/24.
-//
-
 import SwiftUI
 
 struct AddPetView: View {
+    @State private var name: String = ""
+    @State private var age: Int = 0
+    @State private var breed: String = ""
+    @State private var description: String = ""
+    
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        Form {
+            TextField("Name", text: $name)
+            TextField("Breed", text: $breed)
+            TextField("Description", text: $description)
+            
+            Stepper("Age: \(age)", value: $age)
+            
+            Button(action: {
+                // Add pet logic here
+                print("Pet added")
+            }) {
+                Text("Add Pet")
+                    .padding()
+                    .background(Color.green)
+                    .foregroundColor(.white)
+                    .cornerRadius(10)
+            }
+        }
+        .padding()
     }
-}
-
-#Preview {
-    AddPetView()
 }
